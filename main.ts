@@ -11,9 +11,14 @@ function aktualisiereMR () {
         }
     }
 }
-bluetooth.onBluetoothDisconnected(function () {
-    calliBot2.motorStop(C2Motor.rechts, C2Stop.Frei)
-    calliBot2.motorStop(C2Motor.links, C2Stop.Frei)
+bluetooth.onBluetoothConnected(function () {
+    basic.showLeds(`
+        . . # # .
+        # . # . #
+        . # # # .
+        # . # . #
+        . . # # .
+        `)
 })
 function aktualisiereML () {
     rueckwaerts = 0
@@ -28,6 +33,11 @@ function aktualisiereML () {
         }
     }
 }
+bluetooth.onBluetoothDisconnected(function () {
+    basic.showIcon(IconNames.No)
+    calliBot2.motorStop(C2Motor.rechts, C2Stop.Frei)
+    calliBot2.motorStop(C2Motor.links, C2Stop.Frei)
+})
 let MRalt = 0
 let MLalt = 0
 let ntx = 0
